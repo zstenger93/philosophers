@@ -1,11 +1,11 @@
 CC				= cc
-SRC_DIR			= src/
+SRC_DIR			= philo_bonus/
 OBJ_DIR			= obj/
 RM				= rm -rf
 NAME			= philosophers_bonus
 DN				= > /dev/null
 
-SOURCE			=
+SOURCE			= src/philosophers
 
 
 SRC				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SOURCE)))
@@ -17,7 +17,7 @@ $(NAME): $(OBJ)
 	@echo ""
 	@echo "$(YELLOW)  Compiling: $(DEF_COLOR)$(PURPLE)$(NAME) Mandatory Part By:$(DEF_COLOR) $(RED)zstenger(DEF_COLOR)"
 	@echo "$(CYAN2)" $(DN)
-	@$(CC) $(CFLAGS) $(OBJ) -o philosophers $(DN)
+	@$(CC) $(CFLAGS) $(OBJ) -g -pthread -o philosophers $(DN)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p $(@D)
