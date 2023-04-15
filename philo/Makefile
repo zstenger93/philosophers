@@ -1,12 +1,23 @@
 CC				= cc
-SRC_DIR			= philo/
+SRC_DIR			= src/
 OBJ_DIR			= obj/
 RM				= rm -rf
-NAME			= philosophers
+NAME			= philo
 DN				= > /dev/null
 
-SOURCE			= src/philosophers \
-
+SOURCE			= philosophers \
+				  threads/threads \
+				  threads/thread_checks \
+				  utils/get \
+				  utils/free \
+				  utils/utils \
+				  routine/eat \
+				  routine/fork \
+				  routine/sleep \
+				  routine/think \
+				  routine/routine \
+				  init/init \
+				  init/input_check \
 
 SRC				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SOURCE)))
 OBJ				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SOURCE)))
@@ -15,9 +26,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo ""
-	@echo "$(YELLOW)  Compiling: $(DEF_COLOR)$(PURPLE)$(NAME) Mandatory Part By:$(DEF_COLOR) $(RED)zstenger(DEF_COLOR)"
+	@echo "$(YELLOW)  Compiling: $(DEF_COLOR)$(PURPLE)$(NAME) Mandatory Part By:$(DEF_COLOR) $(RED)zstenger$(DEF_COLOR)"
 	@echo "$(CYAN2)" $(DN)
-	@$(CC) $(CFLAGS) $(OBJ) -g -pthreads -o philosophers $(DN)
+	@$(CC) $(CFLAGS) $(OBJ) -g -pthread -o $(NAME) $(DN)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p $(@D)
@@ -42,3 +53,13 @@ re: fclean all
 	@echo "$(RED)Files have been cleaned and project has been rebuilt!$(DEF_COLOR)"
 
 .PHONY: all clean fclean re
+
+DEF_COLOR = \033[0;39m
+CYAN3 = \033[1;4;96m
+YELLOW = \033[1;33m
+PURPLE = \033[1;35m
+BWhite = \033[1;37m
+RED = \033[1;4;91m
+GREEN = \033[4;92m
+CYAN2 = \x1B[1;36m
+CYAN = \033[1;96m
