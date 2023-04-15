@@ -2,7 +2,7 @@ CC				= cc
 SRC_DIR			= philo_bonus/
 OBJ_DIR			= obj/
 RM				= rm -rf
-NAME			= philosophers_bonus
+NAME			= philo_bonus
 DN				= > /dev/null
 
 SOURCE			= src/philosophers
