@@ -1,7 +1,20 @@
-#include "../../includes/philosophers.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 11:22:20 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 11:25:32 by zstenger         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include	"../../includes/philosophers.h"
 
 bool	init_dining_table(t_data *data, int argc, char **argv)
 {
+	usage(argc, argv);
 	if (init_data(data, argc, argv) == true)
 	{
 		init_philosophers(data);
@@ -31,7 +44,7 @@ void	init_philosophers(t_data *data)
 	}
 }
 
-bool init_data(t_data *data, int argc, char **argv)
+bool	init_data(t_data *data, int argc, char **argv)
 {
 	data->full = 0;
 	data->p_threads = NULL;

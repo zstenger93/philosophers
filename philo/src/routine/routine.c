@@ -1,5 +1,16 @@
-#include "../../includes/philosophers.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 16:31:32 by zstenger         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../../includes/philosophers.h"
 
 void	*routine(void *p)
 {
@@ -8,14 +19,11 @@ void	*routine(void *p)
 	philosopher = (t_philo *)p;
 	while (state_of(philosopher) != DEAD)
 	{
-		if (eat(philosopher) == false)
-			break ;
-		if (take_a_nap(philosopher) == false)
-			break ;
+		eat(philosopher);
+		take_a_nap(philosopher);
+		think(philosopher);
 		// if (state_of(philosopher) == FULL)
 		// 	break ;
-		if (think(philosopher) == false)
-			break ;
 	}
 	return (NULL);
 }
@@ -40,6 +48,6 @@ void	print_state(t_data *data, int index, char *state)
 	// if (state == EATIN && time > data->death_time)
 	// 	return ;
 	if (data->keep_eating == true)
-		printf("\033[1;37m%lu \033[1;31m%d\033[0;39m %s\n", time, index, state);
+		printf("\033[1;37m%llu \033[1;31m%d\033[0;39m %s\n", time, index, state);
 	pthread_mutex_unlock(&data->print_mutex);
 }

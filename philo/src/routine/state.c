@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   state.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 11:31:55 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 15:36:43 by zstenger         ###   ########.fr       */
+/*   Created: 2023/04/17 11:43:18 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 11:43:24 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
-void	think(t_philo *philosopher)
+t_state	state_of(t_philo *philosopher)
 {
-	make_(philosopher, THINK);
-	print_state(philosopher->data, philosopher->index, THINKIN);
+	t_state	state;
+
+	pthread_mutex_lock(&philosopher->state_mutex);
+	state = philosopher->state;
+	pthread_mutex_unlock(&philosopher->state_mutex);
+	return (state);
 }

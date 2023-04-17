@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   forks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 11:31:55 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 15:36:43 by zstenger         ###   ########.fr       */
+/*   Created: 2023/04/17 11:36:11 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 12:11:39 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
-void	think(t_philo *philosopher)
+void	drop_right_fork(t_philo *philosopher)
 {
-	make_(philosopher, THINK);
-	print_state(philosopher->data, philosopher->index, THINKIN);
+	pthread_mutex_unlock(philosopher->right_fork);
+}
+
+void	drop_left_fork(t_philo *philosopher)
+{
+	pthread_mutex_unlock(philosopher->left_fork);
+}
+
+void	drop_forks(t_philo *philosopher)
+{
+	pthread_mutex_unlock(philosopher->right_fork);
+	pthread_mutex_unlock(philosopher->left_fork);
 }

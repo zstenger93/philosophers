@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 11:28:35 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 11:28:41 by zstenger         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/philosophers.h"
 
 int	ft_atoi(const char *str)
@@ -25,31 +37,4 @@ int	ft_atoi(const char *str)
 		z++;
 	}
 	return (res * sign);
-}
-
-int	ft_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
-
-void	usage(int argc, char **argv)
-{
-	int	i;
-
-	if (argc < 5 || (argc == 6 && ft_atoi(argv[5]) <= 0) || argc > 6)
-	{
-		print_usage();
-		exit(0);
-	}
-}
-
-void	print_usage(void)
-{
-	printf("This program takes only 4 or 5 arguments:\n");
-	printf("./philo 5 600 200 200\n");
-	printf("or\n");
-	printf("./philo 5 600 200 200 2\n");
 }

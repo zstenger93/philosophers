@@ -5,17 +5,21 @@ RM				= rm -rf
 NAME			= philo
 DN				= > /dev/null
 
-SOURCE			= philosophers \
+SOURCE			= main/philosophers \
 				  threads/threads \
-				  threads/thread_checks \
-				  utils/get \
+				  threads/full_check \
+				  threads/death_check \
 				  utils/free \
 				  utils/utils \
 				  routine/eat \
-				  routine/fork \
+				  routine/drop_forks \
+				  routine/grab_forks \
 				  routine/sleep \
 				  routine/think \
+				  routine/state \
 				  routine/routine \
+				  time/time \
+				  time/last_time \
 				  init/init \
 				  init/input_check \
 

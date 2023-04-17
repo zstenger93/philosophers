@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 11:31:55 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 15:36:43 by zstenger         ###   ########.fr       */
+/*   Created: 2023/04/17 11:14:38 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 11:21:40 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philosophers.h"
+#include	"../../includes/philosophers.h"
 
-void	think(t_philo *philosopher)
+int	main(int argc, char **argv)
 {
-	make_(philosopher, THINK);
-	print_state(philosopher->data, philosopher->index, THINKIN);
+	t_data	data;
+
+	if (init_dining_table(&data, argc, argv) == false)
+		return (1);
+	if (threads(&data) == false)
+		return (1);
+	free_all(&data);
+	return (0);
 }

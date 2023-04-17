@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
+/*   Updated: 2023/04/17 16:22:06 by zstenger         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
@@ -93,8 +105,8 @@ void    input_check(int argc, char **argv);
 void	*routine(void *p);
 void	make_(t_philo *philosopher, t_state state);
 void	print_state(t_data *data, int index, char *state);
-int take_a_nap(t_philo *philosopher);
-int think(t_philo *philosopher);
+void	take_a_nap(t_philo *philosopher);
+void	think(t_philo *philosopher);
 t_state	state_of(t_philo *philosopher);
 uint64_t    start_time(t_data *data);
 u_int64_t	current_time(void);
@@ -102,9 +114,9 @@ int	ft_atoi(const char *str);
 void	drop_right_fork(t_philo *philo);
 void	drop_left_fork(t_philo *philo);
 void	drop_forks(t_philo *philo);
-int	grab_right_fork(t_philo *philo);
-int	grab_left_fork(t_philo *philo);
-int	grab_forks(t_philo *philo);
+void	grab_right_fork(t_philo *philo);
+void	grab_left_fork(t_philo *philo);
+void	grab_forks(t_philo *philo);
 
 
 
