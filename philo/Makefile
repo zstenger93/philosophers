@@ -1,27 +1,27 @@
 CC				= cc
 SRC_DIR			= src/
 OBJ_DIR			= obj/
-RM				= rm -rf
 NAME			= philo
+RM				= rm -rf
 DN				= > /dev/null
 
-SOURCE			= main/philosophers \
-				  threads/threads \
-				  threads/full_check \
-				  threads/death_check \
+SOURCE			= init/init \
+				  time/time \
 				  utils/free \
 				  utils/utils \
 				  routine/eat \
-				  routine/drop_forks \
-				  routine/grab_forks \
 				  routine/sleep \
 				  routine/think \
 				  routine/state \
-				  routine/routine \
-				  time/time \
 				  time/last_time \
-				  init/init \
+				  threads/threads \
+				  routine/routine \
 				  init/input_check \
+				  main/philosophers \
+				  routine/drop_forks \
+				  routine/grab_forks \
+				  threads/full_check \
+				  threads/death_check \
 
 SRC				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SOURCE)))
 OBJ				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SOURCE)))

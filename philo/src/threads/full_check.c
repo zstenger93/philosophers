@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:28 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 16:25:33 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:36:17 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	*monitor_well_fed(void *p)
 			data->full++;
 		if (data->full == data->philo_count)
 			break ;
-		
 		// if (well_fed(data, data->philosophers) == true)
 		// {
 		// 	pthread_mutex_lock(&data->full_mutex);

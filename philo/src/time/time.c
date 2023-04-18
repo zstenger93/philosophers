@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:42:19 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 11:42:46 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:37:29 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ u_int64_t	current_time(void)
 	return ((time.tv_sec * (u_int64_t)1000) + (time.tv_usec / 1000));
 }
 
-uint64_t    start_time(t_data *data)
+uint64_t	start_time(t_data *data)
 {
-	uint64_t    time;
+	uint64_t	time;
 
 	pthread_mutex_lock(&data->start_time_mutex);
 	time = data->start_time;

@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 16:31:32 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:31:51 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*routine(void *p)
 {
-	t_philo *philosopher;
+	t_philo	*philosopher;
 
 	philosopher = (t_philo *)p;
 	while (state_of(philosopher) != DEAD)

@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:22:20 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 11:25:32 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:32:24 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ bool	init_dining_table(t_data *data, int argc, char **argv)
 		return (true);
 	}
 	else
-		return(false);
+		return (false);
 }
 
 void	init_philosophers(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < data->philo_count)

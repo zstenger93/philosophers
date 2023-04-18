@@ -6,13 +6,13 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:37:40 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 16:21:37 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:30:57 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
-int eat(t_philo *philosopher)
+int	eat(t_philo *philosopher)
 {
 	u_int64_t	start;
 	uint64_t	time;
@@ -27,10 +27,10 @@ int eat(t_philo *philosopher)
 		usleep(500);
 	meal_counter(philosopher);
 	drop_forks(philosopher);
-	return (true);  
+	return (true);
 }
 
-void    meal_counter(t_philo *philosopher)
+void	meal_counter(t_philo *philosopher)
 {
 	pthread_mutex_lock(&philosopher->meals_eaten_mutex);
 	philosopher->meals_eaten++;

@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 11:47:32 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:36:02 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*monitor_death(void *p)
 {
 	int		i;
 	int		k;
-	t_data  *data;
+	t_data	*data;
 
 	i = -1;
 	k = -1;
@@ -46,7 +46,7 @@ bool	is_philo_dead(t_philo *philosopher)
 	start = current_time();
 	if (start - lst_t_eaten > philosopher->data->death_time
 		&& (philosopher->data->death_time
-		< (philosopher->data->eat_time + philosopher->data->sleep_time)))
+			< (philosopher->data->eat_time + philosopher->data->sleep_time)))
 	{
 		philosopher->data->keep_eating = false;
 		print_death(lst_t_eaten, philosopher->index, DIED, philosopher->data);

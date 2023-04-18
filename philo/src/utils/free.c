@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:29:28 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 11:29:41 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:37:41 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_all(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	pthread_mutex_destroy(&data->eat_time_mutex);

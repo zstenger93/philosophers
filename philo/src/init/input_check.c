@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:24:55 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/17 11:26:02 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:32:55 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	init_death_sentence(char **argv)
 {
 	printf("\033[1;37m0 \033[1;31m1 \033[1;37m%s\n", FORK);
 	usleep(ft_atoi(argv[2]));
-	printf("\033[1;37m%d \033[1;31m1 \033[1;37m%s\n", (ft_atoi(argv[2]) + 1), "\033[1;31mdied\033[0;39");
+	printf("\033[1;37m%d \033[1;31m1 "
+		"\033[1;37m%s\n", (ft_atoi(argv[2]) + 1), "\033[1;31mdied\033[0;39");
 	exit(0);
 }
 
