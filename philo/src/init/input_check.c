@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:24:55 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:32:55 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:55:10 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	input_check(int argc, char **argv)
 {
 	if (argc == 6 && argv[0][0] == '0')
 		exit(0);
-	if (argv[1][0] == '1' )
+	if (argv[1][0] == '1')
 		init_death_sentence(argv);
 }
 

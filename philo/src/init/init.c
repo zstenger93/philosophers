@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:22:20 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:32:24 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:54:08 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 bool	init_dining_table(t_data *data, int argc, char **argv)
 {
 	usage(argc, argv);
+	input_check(argc, argv);
 	if (init_data(data, argc, argv) == true)
 	{
 		init_philosophers(data);
