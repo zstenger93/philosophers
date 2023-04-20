@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:37:40 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:30:57 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:38:48 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	eat(t_philo *philosopher)
 	uint64_t	time;
 
 	grab_forks(philosopher);
+	last_time_eaten(philosopher);
 	make_(philosopher, EAT);
 	print_state(philosopher->data, philosopher->index, EATIN);
-	last_time_eaten(philosopher);
 	start = current_time();
 	time = eat_time(philosopher->data);
 	while (current_time() - start < time)

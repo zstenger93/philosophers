@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:31:51 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:23:35 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	*routine(void *p)
 		eat(philosopher);
 		take_a_nap(philosopher);
 		think(philosopher);
-		// if (state_of(philosopher) == FULL)
-		// 	break ;
+		if (philosopher->data->full == philosopher->data->philo_count)
+			break ;
 	}
 	return (NULL);
 }
