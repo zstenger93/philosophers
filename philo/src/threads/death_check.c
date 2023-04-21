@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 10:59:52 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:09:32 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*monitor_death(void *p)
 			i = -1;
 		usleep(1000);
 	}
+	return (NULL);
 }
 
 bool	is_philo_dead(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 11:03:41 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:03:23 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,27 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+// ROUTINE
 # define EATIN "\033[1;34mis eating\033[0;39m"
 # define SLEEPIN "\033[1;32mis sleeping\033[0;39m"
 # define THINKIN "\033[1;36mis thinking\033[0;39m"
 # define DIED "\033[1;31mdied\033[0;39m"
 # define FORK "\033[1;37mhas taken a fork\033[0;39m"
+// ERROR MESSAGE
+# define TAKES "\n\033[1;33mThis program takes only 4 or 5 arguments "
+# define ONLYNUM "and those can be only numbers.\n\n\033[1;31m"
+# define FOUR_ARG "./philo 4 410 200 200\n\033[1;37mor\n\033[1;31m"
+# define FIVE_ARG "./philo 4 410 200 200 2\n\033[1;37mand\n\033[1;31m"
+# define SIXTY "Die, Eat and Sleep time should be bigger than 60\n\033[0;39m"
+# define PHILO "\n\033[1;34m./philo \033[1;37m-> \033[1;33mexecutable\n"
+# define PHILO_NUM1 "\033[1;34m    4   \033[1;37"
+# define PHILO_NUM2 "m-> \033[1;33mamount of philosophers at the table\n"
+# define PHILO_DIE "\033[1;34m   410  \033[1;37m-> \033[1;33mtime to die\n"
+# define PHILO_EAT "\033[1;34m   200  \033[1;37m-> \033[1;33mtime to eat\n"
+# define COLOR_LAST "\033[1;34m"
+# define PHILO_SLEEP "   200  \033[1;37m-> \033[1;33mtime to sleep\n\033[0;34m"
+# define OPTIONAL "    2   \033[1;37m-> \033[1;33mnumber of meals"
+# define OPTIONAL_END " (optional)\n\033[0;39m"
 
 typedef enum e_state
 {
@@ -79,9 +95,10 @@ typedef struct s_data
 }	t_data;
 
 // INPUT CHECK
+void		usage(void);
 void		print_usage(void);
-void		usage(int argc, char **argv);
 void		input_check(int argc, char **argv);
+bool		is_all_digit(int argc, char **argv, int i, int j);
 
 // INITIALIZE
 void		init_forks(t_data *data);

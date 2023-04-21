@@ -6,12 +6,13 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:38 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:33:05 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:30:16 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../../includes/philosophers.h"
 
+//check threads if return needed
 int	main(int argc, char **argv)
 {
 	t_data	data;

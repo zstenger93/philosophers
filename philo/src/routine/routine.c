@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 10:38:08 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:23:23 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void	print_state(t_data *data, int index, char *state)
 
 	start = start_time(data);
 	time = current_time() - start;
-	// printf("%lu, %lu\n", start, time);
 	pthread_mutex_lock(&data->print_mutex);
-	// if (state == EATIN && time > data->death_time)
-	// 	return ;
 	if (data->keep_eating == true)
 		printf("\033[1;37m%llu \033[1;31m%d\033[0;39m %s\n", time, index, state);
 	pthread_mutex_unlock(&data->print_mutex);

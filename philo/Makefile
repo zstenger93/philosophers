@@ -4,6 +4,7 @@ OBJ_DIR			= obj/
 NAME			= philo
 RM				= rm -rf
 DN				= > /dev/null
+CFLAGS			= -Werror -Wextra -Wall
 
 SOURCE			= init/init \
 				  time/time \
@@ -50,7 +51,7 @@ fclean:
 	@echo "$(CYAN)FCLEAN$(DEF_COLOR)"
 	@echo "$(RED)Deleting objects, executables.$(DEF_COLOR)"
 	@echo "$(CYAN2)" $(DN)
-	@$(RM) $(NAME) $(DN)
+	@$(RM) $(NAME) philo.dSYM $(DN)
 	@echo "$(RED)Executable and object files have been successfully removed.$(DEF_COLOR)"
 
 re: fclean all
