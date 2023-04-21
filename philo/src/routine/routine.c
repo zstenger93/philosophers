@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/20 14:23:35 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:38:08 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ void	*routine(void *p)
 	philosopher = (t_philo *)p;
 	while (state_of(philosopher) != DEAD)
 	{
+		if (philosopher->data->full == philosopher->data->philo_count
+			|| philosopher->data->keep_eating == false)
+			break ;
 		eat(philosopher);
 		take_a_nap(philosopher);
 		think(philosopher);
-		if (philosopher->data->full == philosopher->data->philo_count)
-			break ;
 	}
 	return (NULL);
 }
