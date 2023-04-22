@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/22 10:51:54 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/22 11:02:03 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void	*monitor_death(void *p)
 		}
 		if (i == data->philo_count - 1)
 			i = -1;
-		usleep(1000);
+		if (((data->eat_time + data->sleep_time) - 1 != data->death_time)
+			&& ((data->eat_time + data->sleep_time) - 2 != data->death_time))
+			usleep(1000);
 	}
 	return (NULL);
 }
@@ -46,13 +48,7 @@ bool	is_philo_dead(t_philo *philo)
 	lst_t_eaten = philo->last_time_eaten;
 	pthread_mutex_unlock(&philo->last_time_eaten_mutex);
 	start = current_time();
-	if (((philo->data->eat_time + philo->data->sleep_time) - 1
-			== philo->data->death_time)
-		|| ((philo->data->eat_time + philo->data->sleep_time) - 2
-			== philo->data->death_time))
-		death_time = philo->data->death_time - 2;
-	else
-		death_time = philo->data->death_time;
+	death_time = philo->data->death_time;
 	if (((lst_t_eaten > death_time) && (start - lst_t_eaten > death_time))
 		|| (start - lst_t_eaten > death_time && (death_time
 				< (philo->data->eat_time + philo->data->sleep_time))))
