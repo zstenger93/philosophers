@@ -6,55 +6,84 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:18 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:43:36 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:33:52 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
-int	threads(t_data *data)
+void	threads(t_data *data)
 {
-	if (create_threads(data) == false)
-		return (false);
-	if (join_threads(data) == false)
-		return (false);
-	return (true);
+	create_threads(data);
+	join_threads(data);
 }
 
-int	create_threads(t_data *data)
+void	create_threads(t_data *data)
 {
 	int	i;
+	int	ret;
 
 	i = -1;
 	data->start_time = current_time();
 	while (++i < data->philo_count)
 	{
-		if (pthread_create(&data->p_threads[i], NULL,
-				&routine, &data->philosophers[i]) != 0)
-			return (false);
+		ret = pthread_create(&data->p_threads[i], NULL,
+				&routine, &data->philosophers[i]);
+		if (print_pthread_create_failed(ret) == true)
+			return ;
 	}
-	if (pthread_create(&data->alive_count, NULL,
-			&monitor_death, data))
-		return (false);
-	if (data->meal_count > 0 && pthread_create(&data->full_count, NULL,
-			&monitor_well_fed, data))
-		return (false);
-	return (true);
+	ret = pthread_create(&data->alive_count, NULL,
+			&monitor_death, data);
+	if (print_pthread_create_failed(ret) == true)
+		return ;
+	if (data->meal_count > 0)
+	{
+		ret = pthread_create(&data->full_count, NULL,
+				&monitor_well_fed, data);
+		if (print_pthread_create_failed(ret) == true)
+			return ;
+	}
 }
 
-int	join_threads(t_data *data)
+void	join_threads(t_data *data)
 {
 	int	i;
+	int	ret;
 
 	i = -1;
-	if (pthread_join(data->alive_count, NULL))
-		return (1);
-	if (data->meal_count && pthread_join(data->full_count, NULL))
-		return (1);
+	ret = pthread_join(data->alive_count, NULL);
+	if (print_pthread_join_failed(ret) == true)
+		return ;
+	if (data->meal_count > 0)
+	{
+		ret = pthread_join(data->full_count, NULL);
+		if (print_pthread_join_failed(ret) == true)
+			return ;
+	}
 	while (++i < data->philo_count)
 	{
-		if (pthread_join(data->p_threads[i], NULL) != 0)
-			return (false);
+		ret = pthread_join(data->p_threads[i], NULL);
+		if (print_pthread_join_failed(ret) == true)
+			return ;
 	}
-	return (true);
+}
+
+int	print_pthread_create_failed(int ret)
+{
+	if (ret != 0)
+	{
+		printf("pthread_create() failed\n");
+		return (true);
+	}
+	return (false);
+}
+
+int	print_pthread_join_failed(int ret)
+{
+	if (ret != 0)
+	{
+		printf("pthread_join() failed\n");
+		return (true);
+	}
+	return (false);
 }

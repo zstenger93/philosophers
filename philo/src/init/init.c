@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:22:20 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 14:59:23 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/22 15:20:38 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_philosophers(t_data *data)
 
 bool	init_data(t_data *data, int argc, char **argv)
 {
+	data->exit_code = 0;
 	data->full = 0;
 	data->p_threads = NULL;
 	data->meal_count = 0;

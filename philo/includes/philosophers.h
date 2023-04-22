@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 14:03:23 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:31:14 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_data
 	int				full;
 	pthread_mutex_t	*forks;
 	u_int64_t		eat_time;
+	int				exit_code;
 	pthread_t		*p_threads;
 	u_int64_t		start_time;
 	u_int64_t		sleep_time;
@@ -108,9 +109,11 @@ bool		init_data(t_data *data, int argc, char **argv);
 bool		init_dining_table(t_data *data, int argc, char **argv);
 
 // THREADS
-int			threads(t_data *data);
-int			join_threads(t_data *data);
-int			create_threads(t_data *data);
+void		threads(t_data *data);
+void		join_threads(t_data *data);
+void		create_threads(t_data *data);
+int			print_pthread_join_failed(int ret);
+int			print_pthread_create_failed(int ret);
 
 // ROUTINE
 void		*routine(void *p);
