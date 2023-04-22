@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 16:09:32 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/22 10:51:54 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,21 @@ bool	is_philo_dead(t_philo *philo)
 {
 	uint64_t	start;
 	uint64_t	lst_t_eaten;
+	u_int64_t	death_time;
 
 	pthread_mutex_lock(&philo->last_time_eaten_mutex);
 	lst_t_eaten = philo->last_time_eaten;
 	pthread_mutex_unlock(&philo->last_time_eaten_mutex);
 	start = current_time();
-	if (((lst_t_eaten > philo->data->death_time)
-			&& (start - lst_t_eaten > philo->data->death_time))
-		|| (start - lst_t_eaten > philo->data->death_time
-			&& (philo->data->death_time
+	if (((philo->data->eat_time + philo->data->sleep_time) - 1
+			== philo->data->death_time)
+		|| ((philo->data->eat_time + philo->data->sleep_time) - 2
+			== philo->data->death_time))
+		death_time = philo->data->death_time - 2;
+	else
+		death_time = philo->data->death_time;
+	if (((lst_t_eaten > death_time) && (start - lst_t_eaten > death_time))
+		|| (start - lst_t_eaten > death_time && (death_time
 				< (philo->data->eat_time + philo->data->sleep_time))))
 	{
 		philo->data->keep_eating = false;
