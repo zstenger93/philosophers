@@ -6,12 +6,13 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/23 14:46:35 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:05:01 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
+//if there is 1-2 ms diff between DT and ET+ST don't sleep or it's random death
 void	*monitor_death(void *p)
 {
 	int		i;
@@ -42,40 +43,36 @@ void	*monitor_death(void *p)
 
 bool	is_philo_dead(t_philo *philo)
 {
-	uint64_t	start;
+	uint64_t	time;
 	uint64_t	lst_t_eaten;
 	u_int64_t	death_time;
 
 	pthread_mutex_lock(&philo->last_time_eaten_mutex);
 	lst_t_eaten = philo->last_time_eaten;
-	start = current_time();
+	time = current_time();
 	death_time = philo->data->death_time;
 	pthread_mutex_unlock(&philo->last_time_eaten_mutex);
-	if (((lst_t_eaten > death_time) && (start - lst_t_eaten > death_time))
-		|| (start - lst_t_eaten > death_time && (death_time
+	if (((lst_t_eaten > death_time) && (time - lst_t_eaten > death_time))
+		|| (time - lst_t_eaten > death_time && (death_time
 				< (philo->data->eat_time + philo->data->sleep_time))))
 	{
 		pthread_mutex_lock(&philo->data->keep_eating_mutex);
 		philo->data->keep_eating = false;
 		pthread_mutex_unlock(&philo->data->keep_eating_mutex);
-		print_death(lst_t_eaten, philo->index, DIED, philo->data);
+		print_death(philo->index, DIED, philo->data);
 		make_(philo, DEAD);
 		return (true);
 	}
 	return (false);
 }
 
-void	print_death(uint64_t time, int index, char *state, t_data *data)
+void	print_death(int index, char *state, t_data *data)
 {
-	uint64_t	start;
-	uint64_t	time2;
-	uint64_t	diff;
+	uint64_t	time;
 
 	pthread_mutex_lock(&data->print_mutex);
-	start = start_time(data);
-	time2 = current_time() - start;
-	diff = time2 + (data->death_time - time2) + 2;
-	printf("\033[1;37m%llu \033[1;31m%d\033[0;39m %s\n", diff, index, state);
+	time = current_time() - start_time(data);
+	printf("\033[1;37m%llu \033[1;31m%d\033[0;39m %s\n", time, index, state);
 	pthread_mutex_unlock(&data->print_mutex);
 }
 

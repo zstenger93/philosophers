@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/23 14:39:38 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:04:15 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void		init_death_sentence(t_data *data);
 void		meal_counter(t_philo *philosopher);
 bool		is_philo_dead(t_philo *philosopher);
 bool		well_fed(t_data *data, t_philo *philosopher);
-void		print_death(uint64_t time, int index, char *state, t_data *data);
+void		print_death(int index, char *state, t_data *data);
 	// THINK
 void		think(t_philo *philosopher);
 	// SLEEP
