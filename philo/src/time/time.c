@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:42:19 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/18 13:37:29 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/23 13:46:58 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,14 @@ uint64_t	start_time(t_data *data)
 	time = data->start_time;
 	pthread_mutex_unlock(&data->start_time_mutex);
 	return (time);
+}
+
+uint64_t	eat_time(t_data *data)
+{
+	uint64_t	eat_time;
+
+	pthread_mutex_lock(&data->eat_time_mutex);
+	eat_time = data->eat_time;
+	pthread_mutex_unlock(&data->eat_time_mutex);
+	return (eat_time);
 }

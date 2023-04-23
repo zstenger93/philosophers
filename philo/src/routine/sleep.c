@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:22 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/21 10:27:50 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/23 13:48:05 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 void	take_a_nap(t_philo *philosopher)
 {
 	uint64_t	start;
-	uint64_t	time;
+	uint64_t	nap_time;
 
-	if (philosopher->data->philo_count > 1)
-	{
-		make_(philosopher, SLEEP);
-		print_state(philosopher->data, philosopher->index, SLEEPIN);
-		start = current_time();
-	}
-	time = eat_time(philosopher->data);
-	while (current_time() - start < time)
+	make_(philosopher, SLEEP);
+	print_state(philosopher->data, philosopher->index, SLEEPIN);
+	pthread_mutex_lock(&philosopher->data->start_time_mutex);
+	start = current_time();
+	nap_time = philosopher->data->sleep_time;
+	pthread_mutex_unlock(&philosopher->data->start_time_mutex);
+	while (current_time() - start < nap_time)
 		usleep(500);
 }

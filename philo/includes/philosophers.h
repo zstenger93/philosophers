@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/22 16:31:14 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/23 14:39:38 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,16 @@ bool		init_dining_table(t_data *data, int argc, char **argv);
 void		threads(t_data *data);
 void		join_threads(t_data *data);
 void		create_threads(t_data *data);
-int			print_pthread_join_failed(int ret);
-int			print_pthread_create_failed(int ret);
+int			print_pthread_join_failed(t_data *data, int ret);
+int			print_pthread_create_failed(t_data *data, int ret);
 
 // ROUTINE
 void		*routine(void *p);
+int			keep_eating(t_data *data);
 	// EAT
 void		*monitor_death(void *p);
+int			full_count(t_data *data);
+void		stop_eating(t_data *data);
 int			eat(t_philo *philosopher);
 void		*monitor_well_fed(void *p);
 void		init_death_sentence(t_data *data);
@@ -140,7 +143,7 @@ void		drop_left_fork(t_philo *philo);
 void		drop_right_fork(t_philo *philo);
 
 // STATE
-t_state		state_of(t_philo *philosopher);
+t_state		state_of_(t_philo *philosopher);
 void		make_(t_philo *philosopher, t_state state);
 void		print_state(t_data *data, int index, char *state);
 
