@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:22:20 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/22 15:20:38 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:33:16 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	init_dining_table(t_data *data, int argc, char **argv)
 {
-	input_check(argc, argv);
 	if (init_data(data, argc, argv) == true)
 	{
 		init_philosophers(data);
@@ -69,6 +68,10 @@ bool	init_data(t_data *data, int argc, char **argv)
 	return (phillocate(data));
 }
 
+/*
+	initialize forks, the first's right fork is the last's left fork
+	the rest is count - 1
+*/
 void	init_forks(t_data *data)
 {
 	int	i;
@@ -86,6 +89,7 @@ void	init_forks(t_data *data)
 	}
 }
 
+// malloc for philosophers, forks and threads
 bool	phillocate(t_data *data)
 {
 	data->philosophers = malloc(sizeof(t_philo) * data->philo_count);

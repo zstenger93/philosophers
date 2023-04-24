@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/23 15:05:01 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:54:25 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 //if there is 1-2 ms diff between DT and ET+ST don't sleep or it's random death
 void	*monitor_death(void *p)
 {
-	int		i;
-	int		k;
-	t_data	*data;
-	int		philos;
+	t_data		*data;
+	int			philos;
+	static int	i = -1;
+	static int	k = -1;
 
-	i = -1;
-	k = -1;
 	data = (t_data *)p;
 	philos = data->philo_count;
 	while (++i < philos && keep_eating(data) == true)

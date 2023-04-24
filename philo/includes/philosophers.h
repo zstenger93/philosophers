@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/23 15:04:15 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:38:04 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_philo
 typedef struct s_data
 {
 	int				full;
+	pthread_t		alive;
 	pthread_mutex_t	*forks;
 	u_int64_t		eat_time;
 	int				exit_code;
@@ -82,7 +83,6 @@ typedef struct s_data
 	pthread_mutex_t	full_mutex;
 	pthread_t		full_count;
 	int				meal_count;
-	pthread_t		alive_count;
 	pthread_mutex_t	print_mutex;
 	int				philo_count;
 	int				keep_eating;
