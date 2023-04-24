@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 11:42:10 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:41:31 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	*routine(void *p)
 
 	philosopher = (t_philo *)p;
 	philos = philosopher->data->philo_count;
-	pthread_mutex_lock(&philosopher->data->full_mutex);
-	meal_count = philosopher->data->meal_count;
-	pthread_mutex_unlock(&philosopher->data->full_mutex);
+	meal_count = meal_count_value(philosopher->data);
 	while (state_of_(philosopher) != DEAD)
 	{
 		if (meal_count > 0)
@@ -57,4 +55,14 @@ void	print_state(t_data *data, int index, char *state)
 	if (keep_eating(data) == true)
 		printf("\033[1;37m%llu \033[1;31m%d\033[0;39m %s\n", time, index, state);
 	pthread_mutex_unlock(&data->print_mutex);
+}
+
+int	meal_count_value(t_data *data)
+{
+	int	meal_count;
+
+	pthread_mutex_lock(&data->full_mutex);
+	meal_count = data->meal_count;
+	pthread_mutex_unlock(&data->full_mutex);
+	return (meal_count);
 }

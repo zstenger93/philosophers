@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:14:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 11:38:04 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:44:06 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int			print_pthread_create_failed(t_data *data, int ret);
 // ROUTINE
 void		*routine(void *p);
 int			keep_eating(t_data *data);
+int			meal_count_value(t_data *data);
 	// EAT
 void		*monitor_death(void *p);
 int			full_count(t_data *data);

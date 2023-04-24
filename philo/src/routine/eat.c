@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:37:40 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/23 14:01:41 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:43:10 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	eat(t_philo *philosopher)
 {
 	u_int64_t	start;
-	uint64_t	time;
+	int			meal_count;
+	uint64_t	time_to_eat;
 
+	meal_count = meal_count_value(philosopher->data);
 	if (philosopher->data->philo_count == 1)
 		init_death_sentence(philosopher->data);
 	else
@@ -28,10 +30,11 @@ int	eat(t_philo *philosopher)
 		pthread_mutex_lock(&philosopher->data->start_time_mutex);
 		start = current_time();
 		pthread_mutex_unlock(&philosopher->data->start_time_mutex);
-		time = eat_time(philosopher->data);
-		while (current_time() - start < time)
+		time_to_eat = eat_time(philosopher->data);
+		while (current_time() - start < time_to_eat)
 			usleep(500);
-		meal_counter(philosopher);
+		if (meal_count > 0)
+			meal_counter(philosopher);
 		drop_forks(philosopher);
 	}
 	return (true);
