@@ -30,7 +30,6 @@ OBJ				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SOURCE)))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo ""
 	@echo "$(YELLOW)  Compiling: $(DEF_COLOR)$(PURPLE)$(NAME) Mandatory Part By:$(DEF_COLOR) $(RED)zstenger$(DEF_COLOR)"
 	@echo "$(CYAN2)" $(DN)
 	@$(CC) $(CFLAGS) $(OBJ) -g -pthread -o $(NAME) $(DN)
