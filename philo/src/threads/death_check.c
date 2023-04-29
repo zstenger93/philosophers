@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 11:54:25 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:05:37 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	*monitor_death(void *p)
 	return (NULL);
 }
 
+/*
+	If a philosopher is dead, set it it's state to dead and the keep eating
+	flag to false.
+*/
 bool	is_philo_dead(t_philo *philo)
 {
 	uint64_t	time;

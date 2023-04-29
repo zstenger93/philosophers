@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:37:40 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 14:43:10 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:40:12 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	meal_counter(t_philo *philosopher)
 	pthread_mutex_unlock(&philosopher->meals_eaten_mutex);
 }
 
+// in case of one philosopher
 void	init_death_sentence(t_data *data)
 {
 	uint16_t	death_time;

@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:32:46 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 14:41:31 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:36:37 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	*routine(void *p)
 	return (NULL);
 }
 
+// set philo state as needed
 void	make_(t_philo *philosopher, t_state state)
 {
 	pthread_mutex_lock(&philosopher->state_mutex);

@@ -6,15 +6,13 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:42:19 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 13:38:27 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:37:13 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philosophers.h"
 
-/*
-	get the current time and return it in milliseconds
-*/
+// get the current time and return it in milliseconds
 u_int64_t	current_time(void)
 {
 	struct timeval	time;

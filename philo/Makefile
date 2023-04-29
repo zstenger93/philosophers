@@ -32,7 +32,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(YELLOW)  Compiling: $(DEF_COLOR)$(PURPLE)$(NAME) Mandatory Part By:$(DEF_COLOR) $(RED)zstenger$(DEF_COLOR)"
 	@echo "$(CYAN2)" $(DN)
-	@$(CC) $(CFLAGS) $(OBJ) -g -fsanitize=thread -pthread -o $(NAME) $(DN)
+	@$(CC) $(CFLAGS) $(OBJ) -g -pthread -o $(NAME) $(DN)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p $(@D)

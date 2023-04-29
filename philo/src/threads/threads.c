@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:18 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/24 11:37:58 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/04/29 08:36:06 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	threads(t_data *data)
 	join_threads(data);
 }
 
-// one thread for each philo and 1-1 for full and death
+// one thread for each philo and 1-1 for monitoring full and death
 void	create_threads(t_data *data)
 {
 	int	i;
@@ -46,7 +46,7 @@ void	create_threads(t_data *data)
 	}
 }
 
-// waiting for all the threads to finish
+// waiting for all the threads to finish and join back to the main thread
 void	join_threads(t_data *data)
 {
 	int	i;
