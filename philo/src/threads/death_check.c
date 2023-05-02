@@ -6,7 +6,7 @@
 /*   By: zstenger <zstenger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:40:32 by zstenger          #+#    #+#             */
-/*   Updated: 2023/04/29 09:05:37 by zstenger         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:13:34 by zstenger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ bool	is_philo_dead(t_philo *philo)
 	uint64_t	lst_t_eaten;
 	u_int64_t	death_time;
 
+	if (state_of_(philo) == EAT)
+		return (false);
 	pthread_mutex_lock(&philo->last_time_eaten_mutex);
 	lst_t_eaten = philo->last_time_eaten;
 	time = current_time();
